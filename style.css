@@ -82,9 +82,32 @@ h3 {
 }
 
 header {
+  --header-height: 3.75rem;
+
   font-size: var(--fs-s);
   line-height: 1.3;
+  position: sticky;
+  top: 0;
   background-color: var(--clr-neutral-100);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+header ul {
+  display: none;
+  gap: 2rem;
+}
+
+header ul a {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: var(--header-height);
 }
 
 header ul a:hover {
@@ -93,6 +116,39 @@ header ul a:hover {
 
 header svg {
   color: var(--clr-accent-400);
+}
+
+header ul a:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-bottom: 0.25rem solid;
+  border-image: linear-gradient(
+      90deg,
+      var(--clr-secondary-400) 0%,
+      var(--clr-secondary-300) 100%
+    )
+    1;
+}
+
+header button {
+  display: none;
+}
+
+@media only screen and (min-width: 37.5em) {
+  header ul {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 62em) {
+  header {
+    --header-height: 5rem;
+  }
+
+  header button {
+    display: unset;
+  }
 }
 
 footer {
